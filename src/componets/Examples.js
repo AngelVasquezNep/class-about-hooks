@@ -1,11 +1,12 @@
-import React, { Fragment } from "react"
+import React from "react"
 
 import { properties } from "../mocks"
 
-import Field from "./FieldMemo"
+import Field1, { FieldToCustomHook } from "./FieldMemo"
 import Count from "./Count"
+import { useForm, useFetchSearch } from "../hooks"
 
-const Field1 = ({ value, handleChange, label }) => {
+const Field = ({ value, handleChange, label }) => {
   return (
     <div className="field">
       <div className="control">
@@ -116,6 +117,74 @@ const FilterMemoValues = () => {
   )
 }
 
+const CustomHooksForm = () => {
+  const [{ firstName, secondName, telephone }, handleChange] = useForm({
+    firstName: "",
+    secondName: "",
+    telephone: ""
+  })
+
+  return (
+    <details className="box">
+      <summary>Custom Hook Form</summary>
+
+      <div className="content">
+        <FieldToCustomHook
+          value={firstName}
+          name="firstName"
+          label="Primer Nombre"
+          handleChange={handleChange}
+        />
+
+        <FieldToCustomHook
+          value={secondName}
+          name="secondName"
+          label="Segundo nombre"
+          handleChange={handleChange}
+        />
+
+        <FieldToCustomHook
+          value={telephone}
+          name="telephone"
+          label="Número"
+          type="number"
+          handleChange={handleChange}
+        />
+
+        <Count />
+      </div>
+    </details>
+  )
+}
+
+const CustomHooksEffect = () => {
+  const [query, setQuery] = React.useState("")
+
+  const baseUrl = "https://rickandmortyapi.com/api/character/"
+
+  const url = React.useMemo(() => `${baseUrl}?name=${query}`, [query])
+
+  const { loading, data } = useFetchSearch(url)
+
+  return (
+    <details className="box">
+      <summary>Custom Hooks Effect</summary>
+
+      <div className="content">
+        <Field value={query} handleChange={setQuery} label="Buscar..." />
+
+        <ul>
+          {loading && <li>Cargando...</li>}
+
+          {data &&
+            data.results &&
+            data.results.map(({ id, name }) => <li key={id}>{name}</li>)}
+        </ul>
+      </div>
+    </details>
+  )
+}
+
 const Examples = () => (
   <div className="container">
     <FieldsExample />
@@ -123,6 +192,10 @@ const Examples = () => (
     <CallBackExample />
 
     <FilterMemoValues />
+
+    <CustomHooksForm />
+
+    <CustomHooksEffect />
   </div>
 )
 

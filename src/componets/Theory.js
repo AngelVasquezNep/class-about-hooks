@@ -10,7 +10,7 @@ const Code = ({ children }) => (
 
 const Theory = () => {
   return (
-    <details className="box" open>
+    <details className="box">
       <summary>Teoria</summary>
 
       <div className="content">
