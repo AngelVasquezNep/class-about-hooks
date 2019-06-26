@@ -7,17 +7,21 @@ import Examples from "./componets/Examples"
 import "./App.css"
 
 const App = () => (
-  <div className="container">
-    <section className="section">
-      <header>
-        <h1 className="title">Hello World</h1>
+  <div className="">
+    <section className="hero is-primary">
+      <header className="hero-body">
+        <div className="container">
+          <h1 className="title">Hello Hooks</h1>
+        </div>
       </header>
     </section>
 
     <section className="section">
-      <Rules />
-      <Theory />
-      <Examples />
+      <div className="container">
+        <Rules />
+        <Theory />
+        <Examples />
+      </div>
     </section>
   </div>
 )

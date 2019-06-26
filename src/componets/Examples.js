@@ -186,7 +186,7 @@ const CustomHooksEffect = () => {
 }
 
 const Examples = () => (
-  <div className="container">
+  <div>
     <FieldsExample />
 
     <CallBackExample />
