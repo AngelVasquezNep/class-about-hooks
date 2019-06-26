@@ -1,6 +1,7 @@
 import React from "react"
 
 import Rules from "./componets/Rules"
+import Theory from "./componets/Theory"
 import Examples from "./componets/Examples"
 
 import "./App.css"
@@ -15,6 +16,7 @@ const App = () => (
 
     <section className="section">
       <Rules />
+      <Theory />
       <Examples />
     </section>
   </div>

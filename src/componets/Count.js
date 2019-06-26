@@ -1,5 +1,10 @@
 import React, { memo, useState } from "react"
 
+function thePropsAreEqual(prevProps, nexProps) {
+  // return true if is unnecesary re-render the component
+  return true
+}
+
 const Count = memo(() => {
   const [count, setCount] = useState(0)
   const renders = React.useRef(0)

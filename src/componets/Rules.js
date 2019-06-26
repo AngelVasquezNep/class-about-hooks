@@ -6,9 +6,26 @@ const Rules = () => (
 
     <div className="content">
       <ul>
-        <li>Sólo llamar hooks en el nivel más alto</li>
+        <li>Los hooks sólo pueden ser usados en Function Components</li>
+        <li>Siempre llamar hooks en el nivel más alto del componente</li>
         <li>
-          No llamar hooks dentro de loops, condiciones o funciones anidadas
+          No declarar hooks dentro de loops, condiciones o funciones anidadas
+        </li>
+        <li>
+          <p>
+            Aunque no es una regla, es una fuerte recomendación que los{" "}
+            <i>custom hooks</i> lleven el prefijo <strong>use</strong>
+          </p>
+          <p>Ejemplo:</p>
+
+          <ul>
+            <li>
+              <strong>use</strong>Form
+            </li>
+            <li>
+              <strong>use</strong>Debounce
+            </li>
+          </ul>
         </li>
       </ul>
     </div>
