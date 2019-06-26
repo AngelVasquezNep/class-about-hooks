@@ -1,6 +1,6 @@
-import React, { useState } from "react"
+import React, { memo, useState } from "react"
 
-const Count = () => {
+const Count = memo(() => {
   const [count, setCount] = useState(0)
   const renders = React.useRef(0)
 
@@ -19,6 +19,6 @@ const Count = () => {
       </button>
     </div>
   )
-}
+})
 
 export default Count
